@@ -17,4 +17,19 @@ router.get('/', function(req, res){
     res.render('places/index',{places})
 })
 
+router.get('/new', function(req,res){
+  res.render('places/new')
+})
+
+// router.get('/', function(req,res){
+//   res.render('places/:id')
+// })
+
+router.post('/', function(req,res){
+  // if(!req.body.image){
+  //   req.body.image = 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2021%2F07%2F13%2FUltimate-Veggie-Burgers-FT-Recipe-0821.jpg&q=60'
+  // }
+  res.redirect('/places')
+})
+
 module.exports = router
