@@ -6,7 +6,7 @@ function index (data) {
         return (
             <div>
                 <h2>{place.name}</h2>
-                <img src={place.pic} alt={place.name} width="200" height="200"></img>
+                <img src={place.pic} alt={place.name}></img>
             </div>
         )
     })
