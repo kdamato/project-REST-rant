@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-const { Schema } = mongoose
 
-const placeSchema = new Schema({
+const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   pic: String,
   cuisines: { type: String, required: true },
@@ -10,5 +9,4 @@ const placeSchema = new Schema({
   founded: Number
 })
 
-const Place = mongoose.model('Place', placeSchema)
-module.exports = Place
+module.exports = mongoose.model('Place', placeSchema)
