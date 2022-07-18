@@ -49,10 +49,15 @@ main {
   background-color: white;
 }
 
-#rating {
+/* #rating {
   text-align: left;
 }
 
 #description {
   text-align: left;
+} */
+
+#col-sm-6{
+  display: flex;
+  flex-direction: row;
 }
