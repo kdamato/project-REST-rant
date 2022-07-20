@@ -60,12 +60,36 @@ router.delete('/:id', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.send('GET edit form stub')
+  res.render('GET edit form stub')
 })
 
-router.post('/:id/rant', function(req,res){
-  res.send('GET /places/:id/rant stub')
+router.get('/:id/rant', (req, res) => {
+  res.render('places/rant')
+})
+
+router.post('/:id/rant', (req, res) => {
+  console.log(req.body)
+  db.Place.findById(req.params.id)
+  .then(place => {
+      // if(req.body.rant === 'on'){
+      //   req.body.rant = true
+      // }
+      db.Comment.create(req.body)
+      .then(comment => {
+          place.comments.push(comment.id)
+          place.save()
+          .then(() => {
+              res.redirect(`/places/${req.params.id}`)
+          })
+      })
+      .catch(err => {
+          res.render('error404')
+      })
   })
+  .catch(err => {
+      res.render('error404')
+  })
+})
 
 router.delete('/:id/rant/:rantId', function(req,res){
   res.send('POST /:id/rant/:rantId stub')

@@ -58,6 +58,9 @@ function show (data) {
             </div>
             <div className="row">
                 <h2>Comments</h2>
+                <a href={`/places/${data.place.id}/rant`}>
+                Add a comment
+                </a>
                 {comments}
             </div>
             </main>
