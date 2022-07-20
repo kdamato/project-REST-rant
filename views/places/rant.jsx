@@ -8,7 +8,7 @@ function new_comment (rants) {
         <Def>
           <main>
             <h1>Add a New Comment</h1>
-            <form method="POST" action={`/places/${rants.id}/rant`}>
+            <form method="POST" action={`/places/${rants.place.id}/comment`}>
                 <div className="form-group">
                     <label htmlFor="author">Your Name</label>
                     <input className="form-control" id="author" name="author" required />

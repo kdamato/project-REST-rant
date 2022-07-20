@@ -64,16 +64,24 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.get('/:id/rant', (req, res) => {
-  res.render('places/rant')
+  let id = req.params.id
+  db.Place.find(id)
+  .then((places) => {
+    res.render('places/rant', {places})
+  })
+  .catch(err => {
+    console.log(err)
+    res.render('error404')
+  })
 })
 
-router.post('/:id/rant', (req, res) => {
+router.post('/:id/comment', (req, res) => {
   console.log(req.body)
   db.Place.findById(req.params.id)
   .then(place => {
-      // if(req.body.rant === 'on'){
-      //   req.body.rant = true
-      // }
+      if(req.body.rant === 'on'){
+        req.body.rant = true
+      }
       db.Comment.create(req.body)
       .then(comment => {
           place.comments.push(comment.id)
